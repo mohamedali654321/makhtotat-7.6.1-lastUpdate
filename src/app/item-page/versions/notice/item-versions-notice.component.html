@@ -1,0 +1,8 @@
+<ds-alert *ngIf="showLatestVersionNotice$ && (showLatestVersionNotice$ | async)"
+          [content]="notice | translate"
+          [dismissible]="false"
+          [type]="AlertTypeEnum.Warning">
+
+          <a style="cursor: pointer;" class="viewbtn" (click)="goToPart()" >{{'item.version.notice.here' | translate}}</a>
+
+</ds-alert>

@@ -1,0 +1,115 @@
+.ribbon-2 {
+    --f: 10px; /* control the folded part*/
+    --r: 15px; /* control the ribbon shape */
+    --t: 10px; /* the top offset */
+    
+    position: absolute;
+    inset: var(--t) calc(-1*var(--f)) auto auto;
+    padding: 0 10px var(--f) calc(10px + var(--r));
+    clip-path: 
+      polygon(0 0,100% 0,100% calc(100% - var(--f)),calc(100% - var(--f)) 100%,
+        calc(100% - var(--f)) calc(100% - var(--f)),0 calc(100% - var(--f)),
+        var(--r) calc(50% - var(--f)/2));
+
+    box-shadow: 0 calc(-1*var(--f)) 0 inset #0005;
+
+    color: rgb(255, 255, 255);
+   
+  }
+
+
+.ribbon {
+    $default-right: 10px;
+    $default-top: -1px;
+    $default-color: #2ca7d8;
+    $default-width: 32px;
+    $default-height: 36px;
+    
+    position: absolute;
+    right: auto;
+    left: 0;
+    top: var(--top, $default-top);
+    
+    // filter: drop-shadow(2px 3px 2px rgba(black, 0.5));
+    
+    > .content {
+      color: white;
+      // font-size: 1.25rem;
+      text-align: center;
+      // font-weight: 400;
+      // background: var(--color, $default-color) linear-gradient(45deg, rgba(black, 0) 0%, rgba(white, 0.25) 100%);
+      padding: 8px 2px 4px;
+      
+      
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+      
+      width: var(--width, $default-width);
+      min-height: var(--height, $default-height);
+      
+      transition: clip-path 1s, padding 1s, background 1s;
+    }
+    
+    &.slant-up > .content {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 12px), 50% calc(100% - 6px), 0 100%);
+    }
+    
+    &.slant-down > .content {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 6px), 0 calc(100% - 12px));
+    }
+    
+    &.down > .content {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8px), 50% 100%, 0 calc(100% - 8px));
+    }
+    
+    &.up > .content {
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 50% calc(100% - 8px), 0 100%);
+    }
+    
+    &.check > .content {
+      clip-path: polygon(0 0, 100% 0, 100% calc(100% - 20px), 40% 100%, 0 calc(100% - 12px));
+    }
+  }
+  
+
+  .ribbon-img:hover{
+    opacity: 1 !important;
+  }
+  
+  .ribbon-img {
+    $default-right: 10px;
+    $default-top: -1px;
+    $default-color: #2ca7d8;
+    $default-width: 32px;
+    $default-height: 36px;
+    
+    position: absolute;
+
+    margin-top: 8%;
+    opacity: .6;
+    margin-right: 0;
+    // right: auto;
+    // left: 0;
+    // top: var(--top, $default-top);
+    
+    // filter: drop-shadow(2px 3px 2px rgba(black, 0.5));
+    
+    > .content-img {
+      // color: white;
+      // font-size: 1.25rem;
+      // text-align: center;
+      // font-weight: 400;
+      // // background: var(--color, $default-color) linear-gradient(45deg, rgba(black, 0) 0%, rgba(white, 0.25) 100%);
+      // padding: 8px 2px 4px;
+      
+      
+      // clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 100%, 0 100%);
+      
+      // width: var(--width, $default-width);
+      // min-height: var(--height, $default-height);
+      
+      // transition: clip-path 1s, padding 1s, background 1s;
+    }
+    
+
+  }
+  

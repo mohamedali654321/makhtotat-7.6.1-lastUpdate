@@ -1,0 +1,31 @@
+<ng-container *ngIf="(newRelationships | async).length > 1">
+  <ul ngbNav #tabs="ngbNav" [destroyOnHide]="true" [activeId]="activeTab$ | async"  class="nav-tabs">
+    <ng-container *ngFor="let relationType of (newRelationships | async)">
+      <li   [ngbNavItem]="relationType.filter">
+
+      <!-- <li *ngIf="( relationType.label.includes('isPublicationOf') ||  relationType.label.includes('isPersonOf') ||  relationType.label.includes('isAuthorOf')  ||  (getRelationshipsCounterByFilter(relationType.label) | async)?.payload?.totalElements > 5)"   [ngbNavItem]="relationType.filter"> -->
+        <a (click)="updateUrl($event,relationType.filter)"  ngbNavLink>{{'item.page.relationships.' + relationType.label | translate}}</a>
+        <ng-template ngbNavContent>
+          <div class="mt-4">
+            <ds-related-entities-search [item]="item"
+                                        [relationType]="relationType.filter"
+                                        [configuration]="relationType.configuration"
+                                        [searchEnabled]="searchEnabled"
+                                        [sideBarWidth]="sideBarWidth">
+            </ds-related-entities-search>
+          </div>
+        </ng-template>
+      </li>
+    </ng-container>
+
+  </ul>
+  <div [ngbNavOutlet]="tabs"></div>
+</ng-container>
+<div *ngIf="(newRelationships | async).length === 1" class="mt-4">
+  <ds-related-entities-search *ngVar="(newRelationships | async)[0] as relationType" [item]="item"
+                              [relationType]="relationType.filter"
+                              [configuration]="relationType.configuration"
+                              [searchEnabled]="searchEnabled"
+                              [sideBarWidth]="sideBarWidth">
+  </ds-related-entities-search>
+</div>

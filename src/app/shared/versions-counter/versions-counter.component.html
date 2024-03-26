@@ -1,0 +1,14 @@
+<!-- <div *ngIf="(countLength | async) > 0">
+    <span [attr.title]="('iamges.counts' | translate)"   class="badge badge-pill badge-secondary align-self-center archived-items-lead"><i class="fa-solid fa-copy"></i>&nbsp;{{(countLength | async)}}
+          </span>
+</div>
+ -->
+
+ <div *ngIf="(countLength | async) > 0">
+    <!-- <span class="pr-2">&nbsp;</span> -->
+    <span [attr.title]="('iamges.counts' | translate)" style="display: flex !important;justify-content: center;align-items: center;width: 25px;height: 25px;"   class="badge badge-pill badge-secondary align-self-center archived-items-lead"><i class="fa-solid fa-plus"></i>{{(countLength | async)}}
+          </span>
+</div>
+
+
+
